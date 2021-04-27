@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.umar.apps.hibernate.inverse">
+
+    <class name="Stock" table="STOCK">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="stockName" column="STOCK_NAME"/>
+        <property name="stockCode" column="STOCK_CODE"/>
+        <set name="stockDailyRecords" table="STOCK_DAILY_RECORD" fetch="select" inverse="false">
+            <key>
+                <column name="STOCK_ID" not-null="true"/>
+            </key>
+            <one-to-many class="StockDailyRecord"/>
+        </set>
+    </class>
+</hibernate-mapping>

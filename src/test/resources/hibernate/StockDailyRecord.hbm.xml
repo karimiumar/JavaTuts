@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.umar.apps.hibernate.inverse">
+    <class name="StockDailyRecord" table="STOCK_DAILY_RECORD">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="priceOpen" column="PRICE_OPEN"/>
+        <property name="priceClose" column="PRICE_CLOSE"/>
+        <property name="priceChange" column="PRICE_CHANGE"/>
+        <property name="volume" column="VOLUME"/>
+        <property name="date" column="[date]"/>
+        <many-to-one name="stock" class="Stock">
+            <column name="STOCK_ID" not-null="true"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
+        http://java.sun.com/xml/ns/persistence/orm_1_0.xsd" version="1.0">
+    <!-- id and name mapped in superclass ORM -->
+    <entity class="com.umar.apps.hibernate.inverse.Stock" access="FIELD">
+        <table name="STOCK"/>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="stockCode" optional="false">
+                <column name="STOCK_CODE"/>
+            </basic>
+            <basic name="stockName">
+                <column name="STOCK_NAME"/>
+            </basic>
+            <!--mapped-by- denotes the "inverse" side in JPA-->
+            <one-to-many name="stockDailyRecords" fetch="LAZY" mapped-by="stock">
+                <join-column name="STOCK_ID"/>
+            </one-to-many>
+        </attributes>
+    </entity>
+
+    <entity class="com.umar.apps.hibernate.inverse.StockDailyRecord" access="FIELD">
+        <table name="STOCK_DAILY_RECORD"/>
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="priceOpen">
+                <column name="PRICE_OPEN"/>
+            </basic>
+            <basic name="priceClose">
+                <column name="PRICE_CLOSE"/>
+            </basic>
+            <basic name="priceChange">
+                <column name="PRICE_CHANGE"/>
+            </basic>
+            <basic name="volume">
+                <column name="VOLUME"/>
+            </basic>
+            <basic name="date">
+                <column name="[date]"/>
+            </basic>
+            <many-to-one name="stock" target-entity="com.umar.apps.hibernate.inverse.Stock">
+                <join-column name="STOCK_ID"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+</entity-mappings>
