@@ -8,7 +8,8 @@
         <table name="STOCK"/>
         <attributes>
             <id name="id">
-                <generated-value strategy="IDENTITY"/>
+                <!--generated-value strategy="IDENTITY"/-->
+                <generated-value strategy="AUTO"/>
             </id>
             <basic name="stockCode" optional="false">
                 <column name="STOCK_CODE"/>
@@ -27,7 +28,8 @@
         <table name="STOCK_DAILY_RECORD"/>
         <attributes>
             <id name="id">
-                <generated-value strategy="IDENTITY"/>
+                <!--generated-value strategy="IDENTITY"/-->
+                <generated-value strategy="AUTO"/>
             </id>
             <basic name="priceOpen">
                 <column name="PRICE_OPEN"/>
