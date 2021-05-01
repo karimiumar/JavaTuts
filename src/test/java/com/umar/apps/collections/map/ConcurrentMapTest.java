@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * may reflect insertion or removal of only some entries.
  *
  * it uses volatile semantics for get(key). In case when Thread1 calls put(key1, value1)
- * and right after that Thread2 calls get(key1), Thread2 wouldn't wait Thread1 to finish its put,
+ * and right after that Thread2 calls get(key1), Thread2 wouldn't wait for Thread1 to finish its put,
  * they are not synchronized with each other and Thread2 can get old associated value.
  * But if put(key1, value1) was finished in Thread1 before Thread2 tries to get(key1) then
  * Thread2 is guaranteed to get this update (value1).

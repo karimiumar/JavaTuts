@@ -78,17 +78,13 @@ public class InverseTest {
         sdr.setStock(stock);
         stock.addStockDailyRecord(sdr);
         em.persist(stock);
-        //em.persist(sdr);
-
         stock.removeStockDailyRecord(sdr);
         em.remove(stock);
-        //em.remove(sdr);
     }
 
-    //@Test
+    @Test
     public void whenStockIsRelationshipOwner_InverseIsFalseThenTwoInsertsAndOneUpdate_UsingHibernate() {
         var session = em.unwrap(Session.class);
-        session.beginTransaction();
         var stock = new Stock();
         stock.setStockCode("SAP");
         stock.setStockName("Sapient");
@@ -102,13 +98,11 @@ public class InverseTest {
         stock.addStockDailyRecord(sdr);
         session.save(stock);
         session.save(sdr);
-        session.getTransaction().commit();
     }
 
     //@Test
     public void whenStockDailyRecordIsRelationshipOwner_InverseIsTrueThenTwoInsertsAndOneUpdate_UsingHibernate() {
         var session = em.unwrap(Session.class);
-        session.beginTransaction();
         var stock = new Stock();
         stock.setStockCode("SAP");
         stock.setStockName("Sapient");
@@ -122,6 +116,5 @@ public class InverseTest {
         stock.addStockDailyRecord(sdr);
         session.save(stock);
         session.save(sdr);
-        session.getTransaction().commit();
     }
 }
