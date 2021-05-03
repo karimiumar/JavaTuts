@@ -38,7 +38,7 @@ public class MethodReferencesExTest {
     @Test
     void given_List_of_Person_when_sorted_using_ComparisonProvider$compareByAge_then_sorted_By_Age() {
         List<Person> roster = Person.createRoster();
-        Person [] unsortedPeople = roster.toArray(new Person[0]);
+        Person [] unsortedPeople = roster.toArray(Person[]::new);
         Arrays.sort(unsortedPeople, Person.ComparisonProvider::compareByAge);
         System.out.println(Arrays.toString(unsortedPeople));
     }
@@ -46,7 +46,7 @@ public class MethodReferencesExTest {
     @Test
     void given_List_of_Person_when_sorted_using_ComparisonProvider$compareByName_then_sorted_By_Name() {
         List<Person> roster = Person.createRoster();
-        Person [] unsortedPeople = roster.toArray(new Person[0]);
+        Person [] unsortedPeople = roster.toArray(Person[]::new);
         Arrays.sort(unsortedPeople, Person.ComparisonProvider::compareByName);
         System.out.println(Arrays.toString(unsortedPeople));
     }
@@ -54,7 +54,7 @@ public class MethodReferencesExTest {
     @Test
     void given_List_of_Person_when_sorted_using_lambda_then_sorted_By_Age() {
         List<Person> roster = Person.createRoster();
-        Person [] unsortedPeople = roster.toArray(new Person[0]);
+        Person [] unsortedPeople = roster.toArray(Person[]::new);
         Arrays.sort(unsortedPeople, (p1, p2) -> Person.compareByAge(p1, p2));
         System.out.println(Arrays.toString(unsortedPeople));
     }
@@ -62,7 +62,7 @@ public class MethodReferencesExTest {
     @Test
     void given_List_of_Person_when_sorted_using_methodReference_then_sorted_By_Age() {
         List<Person> roster = Person.createRoster();
-        Person [] unsortedPeople = roster.toArray(new Person[0]);
+        Person [] unsortedPeople = roster.toArray(Person[]::new);
         Arrays.sort(unsortedPeople, Person::compareByAge);
         System.out.println(Arrays.toString(unsortedPeople));
     }
